@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Pradeep Dairy Farms — fresh, wholesome dairy from our farm to your family in Pulivendula, Andhra Pradesh." />
   <title>Pradeep Dairy Farms | Pure from the Farm</title>
+  <link rel="icon" type="image/jpg" href="logo.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
@@ -20,12 +21,17 @@
     footer{background:#082f24;color:#d9e8e1;padding:55px 0 25px}.footer-grid{display:grid;grid-template-columns:1.4fr .8fr .8fr .9fr;gap:40px}.footer-brand{color:white;font-family:'Playfair Display',serif;font-size:25px}.footer-grid h4{color:white;margin:0 0 14px}.footer-grid a{display:block;color:#b9cec5;font-size:14px;margin:8px 0}.copyright{border-top:1px solid rgba(255,255,255,.12);margin-top:35px;padding-top:20px;font-size:12px;color:#9bb2a8;display:flex;justify-content:space-between;gap:20px}
     @media(max-width:900px){.hero-grid,.story,.contact{grid-template-columns:1fr}.hero-card{min-height:400px}.hero-card img{min-height:400px}.cards{grid-template-columns:repeat(2,1fr)}.stats{grid-template-columns:repeat(2,1fr)}.process{grid-template-columns:1fr 1fr}.footer-grid{grid-template-columns:1fr 1fr}.navlinks{display:none}.menu{display:block}.cta{padding:40px 28px;display:block}.cta .btn{margin-top:12px}}
     @media(max-width:560px){nav{height:68px}.brand img{width:50px;height:50px}.hero{padding-top:115px}.hero-card,.hero-card img{min-height:320px}.cards,.stats,.process,.footer-grid{grid-template-columns:1fr}.gallery{grid-template-columns:1fr 1fr;grid-auto-rows:150px}.gallery img:first-child{grid-column:span 2}.copyright{display:block}.copyright span{display:block;margin-top:8px}}
+
+    /* Order product picker */
+    .order-modal{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;padding:24px}.order-modal.open{display:flex}.order-overlay{position:absolute;inset:0;background:rgba(5,35,25,.62);backdrop-filter:blur(7px)}.order-panel{position:relative;z-index:1;width:min(1050px,96vw);max-height:90vh;overflow:auto;background:#fff;border-radius:30px;padding:38px;box-shadow:0 30px 90px rgba(0,0,0,.25);animation:orderIn .22s ease}.order-close{position:absolute;right:18px;top:14px;width:42px;height:42px;border:0;border-radius:50%;background:#eef4ed;color:var(--green);font-size:29px;line-height:1;cursor:pointer}.order-panel h2{max-width:650px;margin-bottom:10px}.order-intro{margin:0 0 28px;color:var(--muted)}.order-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}.order-product{display:grid;grid-template-columns:180px 1fr;gap:20px;align-items:center;border:1px solid #e3e9e2;border-radius:22px;padding:15px;background:#fbfcfa;transition:.2s}.order-product:hover{transform:translateY(-3px);box-shadow:var(--shadow)}.order-image{height:190px;border-radius:17px;background:var(--cream);overflow:hidden;display:grid;place-items:center}.order-image img{width:100%;height:100%;object-fit:contain;padding:8px}.order-info h3{margin-bottom:8px}.order-info p{font-size:14px;color:var(--muted);margin:0 0 12px}.order-meta{display:inline-block;background:#e8f1e8;color:var(--green);font-weight:700;font-size:12px;padding:5px 10px;border-radius:999px;margin-bottom:15px}.order-info .btn{width:100%;cursor:pointer}.order-panel .eyebrow{margin-bottom:8px}@keyframes orderIn{from{opacity:0;transform:translateY(12px) scale(.98)}to{opacity:1;transform:none}}
+    @media(max-width:760px){.order-panel{padding:30px 18px}.order-grid{grid-template-columns:1fr}.order-product{grid-template-columns:135px 1fr}.order-image{height:150px}}
+    @media(max-width:480px){.order-product{grid-template-columns:1fr}.order-image{height:220px}.order-panel h2{font-size:32px}}
   </style>
 </head>
 <body>
 <header><div class="container"><nav>
   <a class="brand" href="#home"><img src="assets/logo.png" alt="Pradeep Dairy Farms logo"><span>PRADEEP<br>DAIRY FARMS</span></a>
-  <div class="navlinks"><a href="#about">About</a><a href="#products">Products</a><a href="#farm">Our Farm</a><a href="#care">Animal Care</a><a href="#gallery">Gallery</a><a href="#contact">Contact</a><a>Order</a>
+  <div class="navlinks"><a href="#about">About</a><a href="#products">Products</a><a href="#farm">Our Farm</a><a href="#care">Animal Care</a><a href="#gallery">Gallery</a><a href="#contact">Contact</a><a href="#" onclick="openOrder(event)">Order</a>
   <button class="menu" aria-label="Open menu" onclick="document.querySelector('.navlinks').classList.toggle('open')">☰</button>
 </nav></div></header>
 
@@ -34,16 +40,16 @@
   <div class="eyebrow">Farm fresh dairy from Pulivendula</div>
   <h1>Pure from the farm.<br><em>Goodness in every drop.</em></h1>
   <p>Fresh, wholesome dairy made with care — from healthy animals and responsible farming to your family table.</p>
-  <div class="actions"><a class="btn primary" href="#contact">Order Products →</a><a class="btn secondary" href="#farm">Explore Our Farm</a></div>
+  <div class="actions"><a class="btn primary" href="#" onclick="openOrder(event)">Order Products →</a><a class="btn secondary" href="#farm">Explore Our Farm</a></div>
 </div><div class="hero-card"><img src="assets/dairy sample.png" alt="Cows and dairy farm landscape"><div class="hero-badge"><strong>Healthy cows. Quality milk.</strong>Care at every step, from farm to family.</div></div></div></section>
 
 <section class="cream" id="about"><div class="container story"><div class="story-image"><img src="assets/farm%20pic.png" alt="Pradeep Dairy Farms countryside and cows"></div><div><div class="eyebrow">About Pradeep Dairy Farms</div><h2>Where good dairy begins with good care.</h2><p>Pradeep Dairy Farms is built on a simple belief — quality dairy starts with healthy animals, responsible farming and careful handling.</p><p>We are committed to building a dairy brand families can trust for freshness, quality and consistency, while growing with respect for animals, people and the land.</p><div class="checks"><div class="check"><i>✓</i><div><b>Responsible farming</b><br><span>Thoughtful practices designed around animal wellbeing and farm quality.</span></div></div><div class="check"><i>✓</i><div><b>Careful handling</b><br><span>Clean, careful handling from milking through delivery.</span></div></div><div class="check"><i>✓</i><div><b>Long-term vision</b><br><span>Building a trusted dairy business for generations.</span></div></div></div><a class="link" href="#contact">Talk to our farm →</a></div></div></section>
 
 <section id="products"><div class="container"><div class="section-head center"><div class="eyebrow">Our products</div><h2>Freshness you can taste.</h2><p>Our product range is designed around everyday family favourites. Availability can be updated as the farm grows.</p></div><div class="cards">
-<div class="card"><img src="assets/pradeep%20dairy%20farm%20bottle%20logo.png" alt="Pradeep Dairy Farms Fresh Milk Bottle" style="width:100%;height:200px;object-fit:contain;border-radius:16px;margin-bottom:16px;background:#f7f3e9;padding:12px"><h3>Fresh Milk</h3><p>Fresh, wholesome milk carefully handled to preserve its natural goodness and freshness.</p><a class="link" href="#contact">Order milk →</a></div>
-<div class="card"><img src="C:\Users\Hp\OneDrive\Desktop\pradeep-dairy-farms-website\pradeep-dairy-farms\assets\fresh curd.png" alt="Pradeep Dairy Farms Fresh Curd" style="width:100%;height:200px;object-fit:contain;border-radius:16px;margin-bottom:16px;background:#f7f3e9;padding:12px"><h3>Fresh Curd</h3><p>Smooth, creamy and refreshing curd made from quality milk for everyday meals.</p><a class="link" href="#contact">Enquire →</a></div>
-<div class="card"><img src="C:\Users\Hp\OneDrive\Desktop\pradeep-dairy-farms-website\pradeep-dairy-farms\assets\freesh paneer.png" alt="Pradeep Dairy Farms Fresh Paneer" style="width:100%;height:200px;object-fit:contain;border-radius:16px;margin-bottom:16px;background:#f7f3e9;padding:12px"><h3>Fresh Paneer</h3><p>Soft and delicious paneer made from quality milk, ideal for curries and snacks.</p><a class="link" href="#contact">Enquire →</a></div>
-<div class="card"><img src="C:\Users\Hp\OneDrive\Desktop\pradeep-dairy-farms-website\pradeep-dairy-farms\assets\pure ghee.png" alt="Pradeep Dairy Farms Pure Ghee" style="width:100%;height:200px;object-fit:contain;border-radius:16px;margin-bottom:16px;background:#f7f3e9;padding:12px"><h3>Pure Ghee</h3><p>Rich and aromatic ghee prepared with care for traditional cooking and family recipes.</p><a class="link" href="#contact">Enquire →</a></div>
+<div class="card"><img src="assets/fresh-milk.png" alt="Pradeep Dairy Farms Fresh Milk Bottle" style="width:100%;height:200px;object-fit:contain;border-radius:16px;margin-bottom:16px;background:#f7f3e9;padding:12px"><h3>Fresh Milk</h3><p>Fresh, wholesome milk carefully handled to preserve its natural goodness and freshness.</p><a class="link" href="#contact">Order milk →</a></div>
+<div class="card"><img src="assets/fresh-curd.png" alt="Pradeep Dairy Farms Fresh Curd" style="width:100%;height:200px;object-fit:contain;border-radius:16px;margin-bottom:16px;background:#f7f3e9;padding:12px"><h3>Fresh Curd</h3><p>Smooth, creamy and refreshing curd made from quality milk for everyday meals.</p><a class="link" href="#contact">Enquire →</a></div>
+<div class="card"><img src="assets/fresh-paneer.png" alt="Pradeep Dairy Farms Fresh Paneer" style="width:100%;height:200px;object-fit:contain;border-radius:16px;margin-bottom:16px;background:#f7f3e9;padding:12px"><h3>Fresh Paneer</h3><p>Soft and delicious paneer made from quality milk, ideal for curries and snacks.</p><a class="link" href="#contact">Enquire →</a></div>
+<div class="card"><img src="assets/pure-ghee.png" alt="Pradeep Dairy Farms Pure Ghee" style="width:100%;height:200px;object-fit:contain;border-radius:16px;margin-bottom:16px;background:#f7f3e9;padding:12px"><h3>Pure Ghee</h3><p>Rich and aromatic ghee prepared with care for traditional cooking and family recipes.</p><a class="link" href="#contact">Enquire →</a></div>
 </div></div></section>
 
 <section class="cream" id="farm"><div class="container"><div class="section-head"><div class="eyebrow">Our farm</div><h2>From our farm to your family.</h2><p>We believe the quality of milk starts at the farm. Our long-term approach is centred on clean surroundings, appropriate nutrition, animal wellbeing and hygienic handling.</p></div><div class="process"><div class="step"><span class="num">01 — FARM</span><h3>Care</h3><p>Healthy animals and a clean, comfortable environment.</p></div><div class="step"><span class="num">02 — MILKING</span><h3>Collect</h3><p>Milk is collected using careful and hygienic practices.</p></div><div class="step"><span class="num">03 — QUALITY</span><h3>Check</h3><p>Careful handling and quality procedures.</p></div><div class="step"><span class="num">04 — FRESHNESS</span><h3>Protect</h3><p>Focus on maintaining freshness through handling.</p></div><div class="step"><span class="num">05 — FAMILY</span><h3>Deliver</h3><p>Quality dairy reaches your home with care.</p></div></div></div></section>
@@ -55,8 +61,57 @@
 <section><div class="container"><div class="cta"><div><div class="eyebrow" style="color:#b9d68e">Fresh dairy, delivered with care</div><h2>Experience the goodness of fresh dairy.</h2><p>Whether you're ordering for your family, home or business, connect with Pradeep Dairy Farms for fresh dairy enquiries.</p></div><div><a class="btn primary" href="#contact">Order Fresh Milk</a><a class="btn" style="color:white;border-color:rgba(255,255,255,.4);margin-left:8px" href="https://wa.me/919392208294" target="_blank" rel="noopener">WhatsApp</a></div></div></div></section>
 
 <section class="cream" id="contact"><div class="container contact"><div><div class="eyebrow">Let's connect</div><h2>Fresh milk? We're here for you.</h2><p>Contact Pradeep Dairy Farms for product availability, orders, farm visits and business enquiries.</p><div class="contact-box"><div class="contact-list"><div class="contact-item"><span>📍</span><div><b>Location</b><span>Pulivendula, Andhra Pradesh, India</span></div></div><div class="contact-item"><span>📞</span><div><b>Phone</b><span>+91 93922 08294</span></div></div><div class="contact-item"><span>💬</span><div><b>WhatsApp</b><span>Message us for orders and enquiries</span></div></div><div class="contact-item"><span>✉️</span><div><b>Email</b><span>hello@yourdomain.com</span></div></div></div></div></div><div class="contact-box"><h3>Send an enquiry</h3><form class="form" onsubmit="event.preventDefault(); alert('Thank you! Please connect your form to WhatsApp/email before going live.');"><input required placeholder="Your name"><input required type="tel" placeholder="Phone number"><select><option>Fresh Milk</option><option>Curd</option><option>Paneer</option><option>Ghee</option><option>General enquiry</option></select><textarea placeholder="Tell us what you need..."></textarea><button class="btn primary" type="submit">Send Enquiry →</button></form></div></div></section>
+
+<section class="order-modal" id="orderModal" aria-hidden="true">
+  <div class="order-overlay" onclick="closeOrder()"></div>
+  <div class="order-panel" role="dialog" aria-modal="true" aria-labelledby="orderTitle">
+    <button class="order-close" type="button" aria-label="Close order window" onclick="closeOrder()">×</button>
+    <div class="eyebrow">Fresh dairy products</div>
+    <h2 id="orderTitle">Choose what you'd like to order.</h2>
+    <p class="order-intro">Select a product below to send your order enquiry directly on WhatsApp.</p>
+    <div class="order-grid">
+      <article class="order-product">
+        <div class="order-image"><img src="assets/fresh-milk.png" alt="Fresh Milk"></div>
+        <div class="order-info"><h3>Fresh Milk</h3><p>Pure, fresh milk for your everyday family needs.</p><div class="order-meta">1 Litre</div><button class="btn primary" onclick="orderProduct('Fresh Milk - 1 Litre')">Order Fresh Milk →</button></div>
+      </article>
+      <article class="order-product">
+        <div class="order-image"><img src="assets/fresh-paneer.png" alt="Fresh Paneer"></div>
+        <div class="order-info"><h3>Fresh Paneer</h3><p>Soft, fresh paneer made from quality milk.</p><div class="order-meta">500 g</div><button class="btn primary" onclick="orderProduct('Fresh Paneer - 500 g')">Order Paneer →</button></div>
+      </article>
+      <article class="order-product">
+        <div class="order-image"><img src="assets/fresh-curd.png" alt="Fresh Curd"></div>
+        <div class="order-info"><h3>Fresh Curd</h3><p>Thick, creamy and naturally delicious curd.</p><div class="order-meta">500 g</div><button class="btn primary" onclick="orderProduct('Fresh Curd - 500 g')">Order Curd →</button></div>
+      </article>
+      <article class="order-product">
+        <div class="order-image"><img src="assets/pure-ghee.png" alt="Pure Ghee"></div>
+        <div class="order-info"><h3>Pure Ghee</h3><p>Rich and aromatic ghee for traditional cooking.</p><div class="order-meta">500 g</div><button class="btn primary" onclick="orderProduct('Pure Ghee - 500 g')">Order Ghee →</button></div>
+      </article>
+    </div>
+  </div>
+</section>
 </main>
 <footer><div class="container"><div class="footer-grid"><div><div class="footer-brand">PRADEEP DAIRY FARMS</div><p>Pure from the Farm. Goodness in Every Drop.</p><p style="font-size:13px;color:#9bb2a8">Fresh • Wholesome • Naturally Good</p></div><div><h4>Explore</h4><a href="#about">About Us</a><a href="#products">Products</a><a href="#farm">Our Farm</a><a href="#care">Animal Care</a></div><div><h4>Products</h4><a href="#products">Fresh Milk</a><a href="#products">Curd</a><a href="#products">Paneer</a><a href="#products">Ghee</a></div><div><h4>Contact</h4><a href="#contact">Pulivendula, Andhra Pradesh</a><a href="#contact">+91 93922 08294</a><a href="#contact">hello@yourdomain.com</a></div></div><div class="copyright"><span>© 2026 Pradeep Dairy Farms. All Rights Reserved.</span><span>Healthy Cows • Quality Milk • Happy Families</span></div></div></footer>
 <script>const links=document.querySelectorAll('.navlinks a');links.forEach(a=>a.addEventListener('click',()=>document.querySelector('.navlinks').classList.remove('open')));const s=document.createElement('style');s.textContent='@media(max-width:900px){.navlinks.open{display:flex;position:absolute;top:68px;left:0;right:0;background:#fff;padding:18px 4%;flex-direction:column;gap:15px;border-bottom:1px solid #e5ebe5;box-shadow:0 15px 30px rgba(0,0,0,.08)}}';document.head.appendChild(s);</script>
+
+<script>
+function openOrder(event){
+  if(event) event.preventDefault();
+  const modal=document.getElementById('orderModal');
+  modal.classList.add('open');
+  modal.setAttribute('aria-hidden','false');
+  document.body.style.overflow='hidden';
+}
+function closeOrder(){
+  const modal=document.getElementById('orderModal');
+  modal.classList.remove('open');
+  modal.setAttribute('aria-hidden','true');
+  document.body.style.overflow='';
+}
+function orderProduct(product){
+  const message=`Hello Pradeep Dairy Farms, I would like to order: ${product}. Please share availability and price.`;
+  window.open(`https://wa.me/919392208294?text=${encodeURIComponent(message)}`,'_blank');
+}
+document.addEventListener('keydown',e=>{if(e.key==='Escape') closeOrder();});
+</script>
 </body>
 </html>
